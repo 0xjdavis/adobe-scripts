@@ -54,5 +54,4 @@ Jeff Davis ([@0xjdavis](https://github.com/0xjdavis)), previously [@tahoedesigne
 
 ## License
 
-[MIT](LICENSE)
-<img width="1920" height="1080" alt="adobe-scripts" src="https://github.com/user-attachments/assets/720e605c-252b-49e7-a3be-5ad6b7b73377" />
+[MIT](LICENSE) 
