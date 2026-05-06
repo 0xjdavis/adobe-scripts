@@ -1,4 +1,4 @@
-<img width="100%" height="auto" alt="adobe-scripts" src="https://github.com/user-attachments/assets/c0ddb48e-f837-4bf8-ba0d-0a80ca0159d8" />
+<img width="100%" height="auto" alt="adobe-scripts" src="https://github.com/user-attachments/assets/9f98539d-8c56-450c-91e2-ddfad777e448" />
 
 # adobe-scripts
 
