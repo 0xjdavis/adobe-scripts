@@ -1,14 +1,18 @@
-// ============================================================
-// GenerateArtboards.jsx
-// Illustrator ExtendScript — Generate blank artboards from
-// common design dimension sizes (social, print, billboard, digital ads)
-//
-// Styled to match Firefly UXP Plugin dark theme (style guide v1)
-// ============================================================
+/* 
+ * Author - J. Davis 
+ * 0xjdavis@gmail.com
+ *
+ * GenerateArtboards.jsx
+ * Illustrator ExtendScript — Generate blank artboards from
+ * common design dimension sizes (social, print, billboard, digital ads)
+ *
+ * Styled to match Firefly UXP Plugin dark theme (style guide v1)
+ * ============================================================
 
-// ─── DESIGN TOKENS ───────────────────────────────────────────
-// CSS custom properties mapped to [r,g,b] arrays (0–255) for ScriptUI graphics API.
-// ScriptUI does not support hex strings — all colors live here as token arrays.
+ * ─── DESIGN TOKENS ───────────────────────────────────────────
+ * CSS custom properties mapped to [r,g,b] arrays (0–255) for ScriptUI graphics API.
+ * ScriptUI does not support hex strings — all colors live here as token arrays.
+ */
 
 var T = {
     gray50:   [26,  26,  26 ],   // --gray-50  app/dialog background
