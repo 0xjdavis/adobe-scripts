@@ -1,4 +1,7 @@
-/**
+/** 
+ * Author - J. Davis 
+ * 0xjdavis@gmail.com
+ *
  * Extract All Items by Artboard & Layer → CSV
  * --------------------------------------------
  * One row per page item, with metadata. Sorted Artboard # → Top Layer →
