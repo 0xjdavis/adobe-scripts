@@ -1,4 +1,7 @@
 /**
+ * Author - J. Davis 
+ * 0xjdavis@gmail.com
+ *
  * Design System Reference PDF
  * ----------------------------
  * One-click cheat sheet for an Illustrator file structured as a design system
