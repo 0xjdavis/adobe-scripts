@@ -2,7 +2,7 @@
  * Author - J. Davis 
  * 0xjdavis@gmail.com
  *
- * GenerateArtboards.jsx
+ * generate-artboards.jsx
  * Illustrator ExtendScript — Generate blank artboards from
  * common design dimension sizes (social, print, billboard, digital ads)
  *
