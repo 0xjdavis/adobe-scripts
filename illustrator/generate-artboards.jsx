@@ -14,34 +14,36 @@
  * ScriptUI does not support hex strings — all colors live here as token arrays.
  */
 
+
 var T = {
-    gray50: [26, 26, 26],   // --gray-50  app/dialog background
-    gray75: [30, 30, 30],   // --gray-75  panel background
-    gray100: [37, 37, 37],   // --gray-100 elevated surface
-    gray200: [44, 44, 44],   // --gray-200 input fill / card bg
-    gray300: [50, 50, 50],   // --gray-300 hover surface / divider
-    gray400: [61, 61, 61],   // --gray-400 strong border / muted control
-    gray600: [110, 110, 110],   // --gray-600 muted label / subtitle
-    gray700: [144, 144, 144],   // --gray-700 secondary text / icon default
-    gray800: [179, 179, 179],   // --gray-800 body text secondary
-    gray900: [216, 216, 216],   // --gray-900 primary body text
-    gray950: [235, 235, 235],   // --gray-950 highest-emphasis text
-    blue400: [20, 115, 230],   // --blue-400 primary action / active
-    blue500: [13, 102, 208],   // --blue-500 blue hover
-    green400: [45, 157, 120],   // --green-400 success / CTA
-    red400: [227, 72, 80],   // --red-400  error / destructive
-    orange400: [230, 134, 25],   // --orange-400 warning / billboard accent
-    purple400: [124, 101, 216],   // --purple-400 digital ads accent
-    ffOrange: [255, 92, 0],   // --ff-orange brand gradient start
-    ffRed: [227, 72, 80]    // --ff-red   brand gradient end
+    gray50:   [26,  26,  26 ],   // --gray-50  app/dialog background
+    gray75:   [30,  30,  30 ],   // --gray-75  panel background
+    gray100:  [37,  37,  37 ],   // --gray-100 elevated surface
+    gray200:  [44,  44,  44 ],   // --gray-200 input fill / card bg
+    gray300:  [50,  50,  50 ],   // --gray-300 hover surface / divider
+    gray400:  [61,  61,  61 ],   // --gray-400 strong border / muted control
+    gray600:  [110, 110, 110],   // --gray-600 muted label / subtitle
+    gray700:  [144, 144, 144],   // --gray-700 secondary text / icon default
+    gray800:  [179, 179, 179],   // --gray-800 body text secondary
+    gray900:  [216, 216, 216],   // --gray-900 primary body text
+    gray950:  [235, 235, 235],   // --gray-950 highest-emphasis text
+    blue400:  [20,  115, 230],   // --blue-400 primary action / active
+    blue500:  [13,  102, 208],   // --blue-500 blue hover
+    green400: [45,  157, 120],   // --green-400 success / CTA
+    red400:   [227, 72,  80 ],   // --red-400  error / destructive
+    orange400:[230, 134, 25 ],   // --orange-400 warning / billboard accent
+    purple400:[124, 101, 216],   // --purple-400 digital ads accent
+    ffOrange: [255, 92,  0  ],   // --ff-orange brand gradient start
+    ffRed:    [227, 72,  80 ]    // --ff-red   brand gradient end
 };
 
 // Category accent colors — semantic color coding per style guide
 var CAT_COLOR = {
-    "Social Media": T.blue400,
-    "Print Ads": T.gray700,
-    "Billboards & Out-of-Home": T.orange400,
-    "Digital Ads (IAB)": T.purple400
+    "FDI Defaults":              T.green400,
+    "Social Media":              T.blue400,
+    "Print Ads":                 T.gray700,
+    "Billboards & Out-of-Home":  T.orange400,
+    "Digital Ads (IAB)":         T.purple400
 };
 
 // ─── HERO ILLUSTRATION (base64 PNG) ──────────────────────────
@@ -78,6 +80,13 @@ function writeHeroFile() {
 // ─── DATA ────────────────────────────────────────────────────
 
 var CATEGORIES = {
+    "FDI Defaults": [
+        { label: "Wide - 2.8:1 - 1008x360 px",      w: 1008, h: 360,  unit: "px" },
+        { label: "Landscape - 3:2 - 720x480 px",     w: 720,  h: 480,  unit: "px" },
+        { label: "Square - 1:1 - 540x540 px",        w: 540,  h: 540,  unit: "px" },
+        { label: "Portrait - 2:3 - 480x720 px",      w: 480,  h: 720,  unit: "px" },
+        { label: "Tall - 1:2.8 - 360x1008 px",       w: 360,  h: 1008, unit: "px" }
+    ],
     "Social Media": [
         { label: "Instagram - Feed (Square) - 1:1 - 1080x1080 px", w: 1080, h: 1080, unit: "px" },
         { label: "Instagram - Feed (Portrait) - 4:5 - 1080x1350 px", w: 1080, h: 1350, unit: "px" },
@@ -133,14 +142,14 @@ var CATEGORIES = {
     ]
 };
 
-var CATEGORY_NAMES = ["Social Media", "Print Ads", "Billboards & Out-of-Home", "Digital Ads (IAB)"];
+var CATEGORY_NAMES = ["FDI Defaults", "Social Media", "Print Ads", "Billboards & Out-of-Home", "Digital Ads (IAB)"];
 
 // ─── UNIT CONVERSION ─────────────────────────────────────────
 
 function toPts(value, unit) {
-    if (unit === "px") return value;
-    if (unit === "in") return value * 72;
-    if (unit === "mm") return value * 2.8346;
+    if (unit === "px")  return value;
+    if (unit === "in")  return value * 72;
+    if (unit === "mm")  return value * 2.8346;
     return value;
 }
 
@@ -151,18 +160,18 @@ function setBg(el, rgb) {
     try {
         el.graphics.backgroundColor = el.graphics.newBrush(
             el.graphics.BrushType.SOLID_COLOR,
-            [rgb[0] / 255, rgb[1] / 255, rgb[2] / 255, 1]
+            [rgb[0]/255, rgb[1]/255, rgb[2]/255, 1]
         );
-    } catch (e) { }
+    } catch (e) {}
 }
 
 function setFg(el, rgb) {
     try {
         el.graphics.foregroundColor = el.graphics.newPen(
             el.graphics.PenType.SOLID_COLOR,
-            [rgb[0] / 255, rgb[1] / 255, rgb[2] / 255, 1], 1
+            [rgb[0]/255, rgb[1]/255, rgb[2]/255, 1], 1
         );
-    } catch (e) { }
+    } catch (e) {}
 }
 
 function uiFont(size, bold) {
@@ -197,17 +206,17 @@ function styleDrop(el) {
 function buildDialog() {
 
     var dlg = new Window("dialog", "Artboard Generator");
-    dlg.orientation = "column";
+    dlg.orientation   = "column";
     dlg.alignChildren = ["fill", "top"];
-    dlg.margins = 14;
-    dlg.spacing = 8;
+    dlg.margins       = 14;
+    dlg.spacing       = 8;
     setBg(dlg, T.gray75);
 
     // ── Category row
     // Hero illustration — geometric artboard shapes
     try {
         var heroFile = writeHeroFile();
-        var heroImg = dlg.add("image", undefined, heroFile);
+        var heroImg  = dlg.add("image", undefined, heroFile);
         heroImg.alignment = ["fill", "top"];
     } catch (e) {
         // Silently skip hero if file write fails
@@ -218,7 +227,7 @@ function buildDialog() {
     promptLbl.font = uiFont(14, true);
 
     var catRow = dlg.add("group");
-    catRow.orientation = "row";
+    catRow.orientation   = "row";
     catRow.alignChildren = ["left", "center"];
     catRow.spacing = 8;
     catRow.margins = [0, 2, 0, 0];
@@ -231,19 +240,19 @@ function buildDialog() {
 
     // ── Sizes card
     var sizesCard = dlg.add("panel", undefined, "");
-    sizesCard.orientation = "column";
+    sizesCard.orientation   = "column";
     sizesCard.alignChildren = ["fill", "top"];
-    sizesCard.margins = [8, 8, 8, 8];
-    sizesCard.spacing = 6;
+    sizesCard.margins       = [8, 8, 8, 8];
+    sizesCard.spacing       = 6;
     setBg(sizesCard, T.gray100);
 
     // Header row — painted group acting as section header bar
     var sizesHdr = sizesCard.add("group");
-    sizesHdr.orientation = "row";
+    sizesHdr.orientation   = "row";
     sizesHdr.alignChildren = ["left", "center"];
     sizesHdr.preferredSize = [-1, 26];
-    sizesHdr.margins = [6, 0, 0, 0];
-    sizesHdr.spacing = 8;
+    sizesHdr.margins       = [6, 0, 0, 0];
+    sizesHdr.spacing       = 8;
     setBg(sizesHdr, T.gray200);
 
     // Accent dot — small colored square mimicking the left stripe
@@ -257,16 +266,16 @@ function buildDialog() {
 
     // Select / Clear All row
     var selRow = sizesCard.add("group");
-    selRow.orientation = "row";
+    selRow.orientation   = "row";
     selRow.alignChildren = ["left", "center"];
     selRow.spacing = 6;
     selRow.margins = [0, 0, 0, 0];
     setBg(selRow, T.gray100);
 
     var selectAllBtn = selRow.add("button", [0, 0, 84, 22], "Select All");
-    var clearAllBtn = selRow.add("button", [0, 0, 84, 22], "Clear All");
+    var clearAllBtn  = selRow.add("button", [0, 0, 84, 22], "Clear All");
     setBg(selectAllBtn, T.gray300); setFg(selectAllBtn, T.gray800); selectAllBtn.font = uiFont(11);
-    setBg(clearAllBtn, T.gray300); setFg(clearAllBtn, T.gray800); clearAllBtn.font = uiFont(11);
+    setBg(clearAllBtn,  T.gray300); setFg(clearAllBtn,  T.gray800); clearAllBtn.font  = uiFont(11);
 
     // Thin divider
     var sizeDiv = sizesCard.add("panel", undefined, "");
@@ -275,20 +284,20 @@ function buildDialog() {
 
     // Checkbox group
     var cbGroup = sizesCard.add("group");
-    cbGroup.orientation = "column";
+    cbGroup.orientation   = "column";
     cbGroup.alignChildren = ["left", "top"];
     cbGroup.preferredSize = [440, -1];  // height grows to fit all items
-    cbGroup.minimumSize = [440, 100];
-    cbGroup.spacing = 3;
+    cbGroup.minimumSize   = [440, 100];
+    cbGroup.spacing       = 3;
     setBg(cbGroup, T.gray100);
 
-    var checkboxes = [];
+    var checkboxes   = [];
     var currentSizes = [];
 
     function rebuildList(catName) {
         setBg(accentDot, CAT_COLOR[catName] || T.gray400);
         for (var k = checkboxes.length - 1; k >= 0; k--) cbGroup.remove(checkboxes[k]);
-        checkboxes = [];
+        checkboxes   = [];
         currentSizes = CATEGORIES[catName];
         for (var j = 0; j < currentSizes.length; j++) {
             var cb = cbGroup.add("checkbox", undefined, currentSizes[j].label);
@@ -303,27 +312,27 @@ function buildDialog() {
         if (catDrop.selection.index === 0) return;
         rebuildList(CATEGORY_NAMES[catDrop.selection.index - 1]);
         sizesCard.visible = true;
-        optsCard.visible = true;
-        div2.visible = true;
-        btnGroup.visible = true;
+        optsCard.visible  = true;
+        div2.visible      = true;
+        btnGroup.visible  = true;
         dlg.layout.layout(true);
     };
     selectAllBtn.onClick = function () { for (var i = 0; i < checkboxes.length; i++) checkboxes[i].value = true; };
-    clearAllBtn.onClick = function () { for (var i = 0; i < checkboxes.length; i++) checkboxes[i].value = false; };
+    clearAllBtn.onClick  = function () { for (var i = 0; i < checkboxes.length; i++) checkboxes[i].value = false; };
 
     // ── Options card
     var optsCard = dlg.add("panel", undefined, "");
-    optsCard.orientation = "column";
+    optsCard.orientation   = "column";
     optsCard.alignChildren = ["fill", "top"];
-    optsCard.margins = [8, 8, 8, 8];
-    optsCard.spacing = 8;
+    optsCard.margins       = [8, 8, 8, 8];
+    optsCard.spacing       = 8;
     setBg(optsCard, T.gray100);
 
     var optsHdr = optsCard.add("group");
-    optsHdr.orientation = "row";
+    optsHdr.orientation   = "row";
     optsHdr.alignChildren = ["left", "center"];
     optsHdr.preferredSize = [-1, 26];
-    optsHdr.margins = [6, 0, 0, 0];
+    optsHdr.margins       = [6, 0, 0, 0];
     setBg(optsHdr, T.gray200);
 
     var optsHdrLbl = optsHdr.add("statictext", undefined, "OPTIONS");
@@ -334,7 +343,7 @@ function buildDialog() {
     setBg(optsDiv, T.gray300);
 
     var gapRow = optsCard.add("group");
-    gapRow.orientation = "row";
+    gapRow.orientation   = "row";
     gapRow.alignChildren = ["left", "center"];
     gapRow.spacing = 8;
     setBg(gapRow, T.gray100);
@@ -345,7 +354,7 @@ function buildDialog() {
     styleInput(gapField);
 
     var labelRow = optsCard.add("group");
-    labelRow.orientation = "row";
+    labelRow.orientation   = "row";
     labelRow.alignChildren = ["left", "center"];
     labelRow.spacing = 8;
     setBg(labelRow, T.gray100);
@@ -360,29 +369,29 @@ function buildDialog() {
     setBg(div2, T.gray300);
 
     var btnGroup = dlg.add("group");
-    btnGroup.orientation = "row";
-    btnGroup.alignment = ["right", "center"];
+    btnGroup.orientation   = "row";
+    btnGroup.alignment     = ["right", "center"];
     btnGroup.alignChildren = ["right", "center"];
     btnGroup.spacing = 8;
     btnGroup.margins = [0, 2, 0, 0];
     setBg(btnGroup, T.gray75);
 
-    var cancelBtn = btnGroup.add("button", [0, 0, 90, 28], "Cancel", { name: "cancel" });
+    var cancelBtn   = btnGroup.add("button", [0, 0, 90, 28],  "Cancel",   { name: "cancel" });
     var generateBtn = btnGroup.add("button", [0, 0, 114, 28], "Generate", { name: "ok" });
-    setBg(cancelBtn, T.gray300); setFg(cancelBtn, T.gray800); cancelBtn.font = uiFont(12);
+    setBg(cancelBtn,   T.gray300); setFg(cancelBtn,   T.gray800); cancelBtn.font   = uiFont(12);
     setBg(generateBtn, T.blue400); setFg(generateBtn, T.gray950); generateBtn.font = uiFont(12, true);
     generateBtn.active = true;
 
     // Hide everything until user picks a category
     sizesCard.visible = false;
-    optsCard.visible = false;
-    div2.visible = false;
-    btnGroup.visible = false;
+    optsCard.visible  = false;
+    div2.visible      = false;
+    btnGroup.visible  = false;
 
     cancelBtn.onClick = function () { dlg.close(0); };
     generateBtn.onClick = function () {
         var selected = [];
-        var catName = CATEGORY_NAMES[catDrop.selection.index - 1];
+        var catName  = CATEGORY_NAMES[catDrop.selection.index - 1];
         for (var i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].value) selected.push(currentSizes[i]);
         }
@@ -401,10 +410,10 @@ function buildDialog() {
 function generateArtboards(sizes, gap, addLabels, catName) {
 
     var sorted = sizes.slice();
-    sorted.sort(function (a, b) { return (b.w / b.h) - (a.w / a.h); });
+    sorted.sort(function(a, b) { return (b.w / b.h) - (a.w / a.h); });
 
-    var count = sorted.length;
-    var PAD = 50;
+    var count  = sorted.length;
+    var PAD    = 50;
     var TARGET = 600;
 
     // Normalize each to aspect-ratio box (longest side = TARGET)
@@ -426,7 +435,7 @@ function generateArtboards(sizes, gap, addLabels, catName) {
         if (dims[d].w > maxW) maxW = dims[d].w;
         totalH += dims[d].h + gap;
     }
-    var canvasW = maxW + (PAD * 2);
+    var canvasW = maxW   + (PAD * 2);
     var canvasH = totalH + PAD;
 
     var doc = app.documents.add(DocumentColorSpace.RGB, canvasW, canvasH);
@@ -441,7 +450,7 @@ function generateArtboards(sizes, gap, addLabels, catName) {
 
     // Start placing from top-left of canvas
     var leftX = -halfW + PAD;
-    var topY = halfH - PAD;
+    var topY  = halfH  - PAD;
 
     // Set artboard 0
     doc.artboards[0].artboardRect = [leftX, topY, leftX + dims[0].w, topY - dims[0].h];
@@ -455,7 +464,7 @@ function generateArtboards(sizes, gap, addLabels, catName) {
             ab.name = dims[i].label;
             topY -= (dims[i].h + gap);
         } catch (e) {
-            alert("Stopped at " + (i + 1) + "/" + count + ": " + e.message);
+            alert("Stopped at " + (i+1) + "/" + count + ": " + e.message);
             break;
         }
     }
@@ -467,10 +476,10 @@ function generateArtboards(sizes, gap, addLabels, catName) {
 // ─── HELPERS ─────────────────────────────────────────────────
 
 function makeGray(brightness) {
-    var c = new RGBColor();
-    c.red = brightness;
+    var c   = new RGBColor();
+    c.red   = brightness;
     c.green = brightness;
-    c.blue = brightness;
+    c.blue  = brightness;
     return c;
 }
 
