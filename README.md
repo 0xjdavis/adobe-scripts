@@ -42,9 +42,9 @@ Scripts live in the `/illustrator` folder. Each one is standalone, drop it in an
 
 ## Resources
 
-- [Illustrator Scripting Guide](https://www.adobe.com/content/dam/acom/en/devnet/illustrator/pdf/AI_ScriptGuide_JS.pdf)
-- [Illustrator JavaScript Reference](https://www.adobe.com/content/dam/acom/en/devnet/illustrator/pdf/Illustrator_JavaScript_Scripting_Reference.pdf)
-- [Community Scripting Docs](https://illustrator-scripting-guide.readthedocs.io/)
+- [Adobe CEP Samples](https://github.com/Adobe-CEP/Samples)
+- [Adobe CEP Getting Started guides](https://github.com/Adobe-CEP/Getting-Started-guides)
+- [Adobe CEP Resources](https://github.com/Adobe-CEP/Resources)
 
 ---
 
